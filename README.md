@@ -98,7 +98,7 @@ This should create a `node_modules/` directory in the root directory for the pro
 
 It should show a button in the right side of the toolbar like the one in the image:
 
-![Code button](./img/code_button.png)
+![Code button](./images/code_button.png)
 
 4. To hide the toolbar for viewers paste the following code in the third cell:
 
@@ -141,7 +141,7 @@ It should show a button in the right side of the toolbar like the one in the ima
 
 It should show a button in the right side of the header like the one in the image:
 
-![Toolbars button](./img/toolbars_button.png)
+![Toolbars button](./images/toolbars_button.png)
 
 5. To avoid synchronization issues due to the `auto-save` functionality that cause messages to be showed to users stating that the notebook has changed and that they should reload, paste the following code in the last cell:
 
@@ -156,7 +156,7 @@ The first time you are going to setup a project/demo, you should do the followin
 1. Create a repository in GitHub for this new project
    - Instead of creating a new one, you can fork this one
    - This needs to be done only once per project/demo
-2. Clone the repository to your computer (`git clone ...`)
+2. Clone the repository to your computer (`git clone <URL>`)
 3. Put the files you created inside
    - If you forked this repository, modify the files instead
 
