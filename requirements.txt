@@ -1,0 +1,9 @@
+ndg-httpsclient==0.4.2
+pyOpenSSL==16.0.0
+pyasn1==0.1.9
+
+numpy==1.11.1
+scipy==0.18.0
+scikit-image==0.12.3
+plotly==1.12.6
+ipywidgets==5.2.2
