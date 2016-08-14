@@ -156,15 +156,15 @@ The first time you are going to setup a project/demo, you should do the followin
 1. Create a repository in GitHub for this new project
    - Instead of creating a new one, you can fork this one
    - This needs to be done only once per project/demo
-2. Clone the repository to your computer (`git clone <URL>`)
+2. Clone the repository to your computer (`$ git clone <URL>`)
 3. Put the files you created inside
    - If you forked this repository, modify the files instead
 
 Now you are able to make changes, commit them to the repository, and push them to GitHub for them to be visible to MyBinder.org. Everytime you want to make changes for the deployment you should do the following:
 
-1. Add all the changes: `git add -A`
-2. Commit with a message: `git commit -m "Your message here..."`
-3. Push changes to GitHub: `git push`
+1. Add all the changes: `$ git add -A`
+2. Commit with a message: `$ git commit -m "Your message here..."`
+3. Push changes to GitHub: `$ git push`
 
 After these commands, you should be able to so the changes in the GitHub repository. If you can, you are ready to deploy to MyBinder.org.
 
@@ -183,6 +183,57 @@ At this point your deploy should be loading for the first time (`matplotlib` wil
 
 1. Copy the URL for the demo
 2. Share the URL with whoever you want to view the demo
+
+## Dependencies
+
+### Python dependencies
+
+Any Python depdency your project/demo has, can be included in the `requirements.txt` file. If you package is provided in `PyPI` but you have a link to a repository that has a package-like structure (`pyquante2` has this needed structure), then you can add the link to the GitHub zip file, as is shown in the example:
+
+```
+# Example requirements.txt file contents
+
+numpy==1.11.1
+scipy==0.18.0
+scikit-image==0.12.3
+plotly==1.12.6
+ipywidgets==5.2.2
+
+https://github.com/rpmuller/pyquante2/archive/master.zip
+```
+
+### The `ipywidgets` dependency
+
+The `Dockerfile` in the respository is needed because the `ipywidgets` dependency needs an extra command to be activated. This command is:
+
+```
+$ jupyter nbextension enable --py widgetsnbextension
+```
+
+and it should be executed over the Jupyter binary. Since that can not be done using the `requirements.txt` file, a `Dockerfile` option is provided by MyBinder.org to accomplish this. The command added is:
+
+```
+RUN jupyter nbextension enable --py widgetsnbextension
+```
+
+### Python 3 support
+
+Python 3 support is available in MyBinder.org, but it's the default one. To apply Python 3 adjustments in the `Dockerfile` you should use a prefix route in your commands as is shown in the following example:
+
+```
+RUN /home/main/anaconda/envs/python3/bin/pip install -r requirements.txt
+```
+
+That line is left inside the `Dockerfile` but it's commented out as the current installation only requires Python 2.
+
+### Non-Python dependencies
+
+If you have dependencies that are not distributed as Python packages, you may install those inside the `Dockerfile` with an appropiate command for an Ubuntu distribution (used in the backend by MyBinder.org). For example, if you need `pygraphviz`, you may do the following in the `Dockerfile`:
+
+```
+RUN apt-get update
+RUN apt-get install -y graphviz
+```
 
 ## Questions
 
