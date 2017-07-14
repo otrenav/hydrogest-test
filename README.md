@@ -1,13 +1,15 @@
-If you want my help, you can reach me through:
 
-[![Contact me on Codementor](https://cdn.codementor.io/badges/contact_me_github.svg)](https://www.codementor.io/otrenav) [![Contact me on HackHands](https://s32.postimg.org/tn6q32hut/hackhands.png)](https://hackhands.com/otrenav/)
+| [Website](http://links.otrenav.com/website) | [Twitter](http://links.otrenav.com/twitter) | [LinkedIn](http://links.otrenav.com/linkedin)  | [GitHub](http://links.otrenav.com/github) | [GitLab](http://links.otrenav.com/gitlab) | [CodeMentor](http://links.otrenav.com/codementor) |
 
 ---
 
 # Hydrogen Test
 
-- Repository built for Tony Zeng for a job posted in CodeMentor.io
-- MyBinder.org is used to deploy Jupyter notebooks that serve as demos
+- Omar Trejo
+- August, 2016
+- Developed for Tony Zeng
+
+MyBinder.org is used to deploy Jupyter notebooks that serve as demos.
 
 ## Instructions
 
@@ -29,9 +31,11 @@ This step is the same as always. Just develop your code normally.
 npm install plotly-notebook-js
 ```
 
-This should create a `node_modules/` directory in the root directory for the project that contains the `plotly-notebook-js` files.
+This should create a `node_modules/` directory in the root directory for the
+project that contains the `plotly-notebook-js` files.
 
-2. To execute all the cells in the notebook paste the following code int he first cell (remember it must be the first cell):
+2. To execute all the cells in the notebook paste the following code int he
+   first cell (remember it must be the first cell):
 
 ```
 %%html
@@ -101,7 +105,8 @@ This should create a `node_modules/` directory in the root directory for the pro
 </script>
 ```
 
-It should show a button in the right side of the toolbar like the one in the image:
+It should show a button in the right side of the toolbar like the one in the
+image:
 
 ![Code button](./images/code_button.png)
 
@@ -144,11 +149,14 @@ It should show a button in the right side of the toolbar like the one in the ima
 </script>
 ```
 
-It should show a button in the right side of the header like the one in the image:
+It should show a button in the right side of the header like the one in the
+image:
 
 ![Toolbars button](./images/toolbars_button.png)
 
-5. To avoid synchronization issues due to the `auto-save` functionality that cause messages to be showed to users stating that the notebook has changed and that they should reload, paste the following code in the last cell:
+5. To avoid synchronization issues due to the `auto-save` functionality that
+   cause messages to be showed to users stating that the notebook has changed
+   and that they should reload, paste the following code in the last cell:
 
 ```
 %autosave 0
@@ -156,7 +164,8 @@ It should show a button in the right side of the header like the one in the imag
 
 ### 3. Send your notebook to a GitHub repository
 
-The first time you are going to setup a project/demo, you should do the following:
+The first time you are going to setup a project/demo, you should do the
+following:
 
 1. Create a repository in GitHub for this new project
    - Instead of creating a new one, you can fork this one
@@ -165,13 +174,16 @@ The first time you are going to setup a project/demo, you should do the followin
 3. Put the files you created inside
    - If you forked this repository, modify the files instead
 
-Now you are able to make changes, commit them to the repository, and push them to GitHub for them to be visible to MyBinder.org. Everytime you want to make changes for the deployment you should do the following:
+Now you are able to make changes, commit them to the repository, and push them
+to GitHub for them to be visible to MyBinder.org. Everytime you want to make
+changes for the deployment you should do the following:
 
 1. Add all the changes: `$ git add -A`
 2. Commit with a message: `$ git commit -m "Your message here..."`
 3. Push changes to GitHub: `$ git push`
 
-After these commands, you should be able to so the changes in the GitHub repository. If you can, you are ready to deploy to MyBinder.org.
+After these commands, you should be able to so the changes in the GitHub
+repository. If you can, you are ready to deploy to MyBinder.org.
 
 ### 4. Deploy notebook to MyBinder.org
 
@@ -182,7 +194,11 @@ After these commands, you should be able to so the changes in the GitHub reposit
 4. Wait for the three circles to be green (completed)
 5. Click on the "launch binder" button on the right side
 
-At this point your deploy should be loading for the first time (`matplotlib` willl create some fonts for you and display a message). It may take a couple of minutes for this first time to load completely and some filters/sliders may not show correctly. Once it has finished, you can reload the site and get the normal experience from then on.
+At this point your deploy should be loading for the first time (`matplotlib`
+willl create some fonts for you and display a message). It may take a couple of
+minutes for this first time to load completely and some filters/sliders may not
+show correctly. Once it has finished, you can reload the site and get the normal
+experience from then on.
 
 ### 5. Share your demo
 
@@ -193,7 +209,11 @@ At this point your deploy should be loading for the first time (`matplotlib` wil
 
 ### Python dependencies
 
-Any Python depdency your project/demo has, can be included in the `requirements.txt` file. If you package is provided in `PyPI` but you have a link to a repository that has a package-like structure (`pyquante2` has this needed structure), then you can add the link to the GitHub zip file, as is shown in the example:
+Any Python depdency your project/demo has, can be included in the
+`requirements.txt` file. If you package is provided in `PyPI` but you have a
+link to a repository that has a package-like structure (`pyquante2` has this
+needed structure), then you can add the link to the GitHub zip file, as is shown
+in the example:
 
 ```
 # Example requirements.txt file contents
@@ -209,13 +229,16 @@ https://github.com/rpmuller/pyquante2/archive/master.zip
 
 ### The `ipywidgets` dependency
 
-The `Dockerfile` in the respository is needed because the `ipywidgets` dependency needs an extra command to be activated. This command is:
+The `Dockerfile` in the respository is needed because the `ipywidgets`
+dependency needs an extra command to be activated. This command is:
 
 ```
 $ jupyter nbextension enable --py widgetsnbextension
 ```
 
-and it should be executed over the Jupyter binary. Since that can not be done using the `requirements.txt` file, a `Dockerfile` option is provided by MyBinder.org to accomplish this. The command added is:
+and it should be executed over the Jupyter binary. Since that can not be done
+using the `requirements.txt` file, a `Dockerfile` option is provided by
+MyBinder.org to accomplish this. The command added is:
 
 ```
 RUN jupyter nbextension enable --py widgetsnbextension
@@ -223,17 +246,23 @@ RUN jupyter nbextension enable --py widgetsnbextension
 
 ### Python 3 support
 
-Python 3 support is available in MyBinder.org, but it's the default one. To apply Python 3 adjustments in the `Dockerfile` you should use a prefix route in your commands as is shown in the following example:
+Python 3 support is available in MyBinder.org, but it's the default one. To
+apply Python 3 adjustments in the `Dockerfile` you should use a prefix route in
+your commands as is shown in the following example:
 
 ```
 RUN /home/main/anaconda/envs/python3/bin/pip install -r requirements.txt
 ```
 
-That line is left inside the `Dockerfile` but it's commented out as the current installation only requires Python 2.
+That line is left inside the `Dockerfile` but it's commented out as the current
+installation only requires Python 2.
 
 ### Non-Python dependencies
 
-If you have dependencies that are not distributed as Python packages, you may install those inside the `Dockerfile` with an appropiate command for an Ubuntu distribution (used in the backend by MyBinder.org). For example, if you need `pygraphviz`, you may do the following in the `Dockerfile`:
+If you have dependencies that are not distributed as Python packages, you may
+install those inside the `Dockerfile` with an appropiate command for an Ubuntu
+distribution (used in the backend by MyBinder.org). For example, if you need
+`pygraphviz`, you may do the following in the `Dockerfile`:
 
 ```
 RUN apt-get update
@@ -242,13 +271,21 @@ RUN apt-get install -y graphviz
 
 ## Questions
 
-If you get any questions, feel free to contact me through CodeMentor. If it's a mistake/bug on my part, I'll be happy to fix it.
+If you get any questions, feel free to contact me through CodeMentor. If it's a
+mistake/bug on my part, I'll be happy to fix it.
 
 ## Resources
 
-If you are new to Git and GitHub in general, you can check the following resources to get started:
+If you are new to Git and GitHub in general, you can check the following
+resources to get started:
 
 - https://www.atlassian.com/git/tutorials/
 - https://git-scm.com/book/en/v2
 - https://try.github.io/levels/1/challenges/1
 - https://www.codecademy.com/learn/learn-git
+
+---
+
+> "The best ideas are common property."
+>
+> —Seneca
