@@ -1,5 +1,5 @@
 ndg-httpsclient==0.4.2
-pyOpenSSL==16.0.0
+pyOpenSSL==17.5.0
 pyasn1==0.1.9
 
 numpy==1.11.1
